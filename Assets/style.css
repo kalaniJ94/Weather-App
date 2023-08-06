@@ -1,1 +1,12 @@
 /* Unsure of the CSS situation at this moment, seems like most of the sheets will be done in HTML via the library. */
+:root{
+    --white: #ebe9e9e2;
+    --grey: #4c5350;
+    --gold: #79872b;
+    --box: #9f9f9f6b;
+}
+
+    *{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: var(--white);
+    }

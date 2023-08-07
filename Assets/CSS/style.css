@@ -29,12 +29,17 @@ aside #searchField {
   border: solid black 1px;
   height: 75px;
 }
+aside #searchField h3 {
+  display: flex;
+  margin: 0px;
+}
 aside #searchHistory {
   border: solid black 1px;
   height: 500px;
 }
 aside #searchHistory h3 {
   display: flex;
+  background-color: rgba(159, 159, 159, 0.4196078431);
 }
 
 section {
@@ -47,6 +52,7 @@ section #currentWeather {
 }
 section #currentWeather h3 {
   display: flex;
+  background-color: rgba(159, 159, 159, 0.4196078431);
 }
 section #futureWeather {
   border: solid black 1px;
@@ -56,15 +62,16 @@ section #futureWeather {
 }
 section #futureWeather #futureWeather h3 {
   width: 100%;
-  color: #4c5350;
+  background-color: rgba(159, 159, 159, 0.4196078431);
 }
 section #forecastCtn {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
-section .forecast {
+section #forecastCtn .forecast {
   border: purple solid 1px;
   width: 200px;
   height: 300px;
+  margin: 10px;
 }/*# sourceMappingURL=style.css.map */

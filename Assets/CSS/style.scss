@@ -37,6 +37,10 @@ aside {
     #searchField {
         border: $border;
         height: 75px;
+        h3{
+            display: flex;
+            margin: 0px;
+        }
     }
 
     #searchHistory {
@@ -44,6 +48,7 @@ aside {
         height: 500px;
             h3{
                 display: flex;
+                background-color: $box;
          }
     }
 }
@@ -57,6 +62,7 @@ section {
         height: 200px;
         h3{
             display: flex;
+            background-color: $box;
         }
     }
 
@@ -68,7 +74,7 @@ section {
         
         #futureWeather h3{
             width: 100%;
-            color: #4c5350;
+           background-color: $box;
             
         }
     }
@@ -77,12 +83,13 @@ section {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
+        
+        .forecast{
+            border: purple solid 1px;
+            width: 200px;
+            height: 300px;
+            margin: 10px;
+        }
     }
-
-    .forecast{
-        border: purple solid 1px;
-        width: 200px;
-        height: 300px;
-    }
-
+        
 }

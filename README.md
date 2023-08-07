@@ -42,6 +42,9 @@ https://forum.freecodecamp.org/t/what-do-you-prefer-pure-css-or-the-super-amazin
 https://blog.logrocket.com/the-definitive-guide-to-scss/
 https://m.youtube.com/watch?v=Zz6eOVaaelI
 
+https://sass-lang.com/
+https://www.w3schools.com/css/css_form.asp
+
 ## License
 
 The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>5 Day Forecast</title>
-    <link rel="stylesheet" href="Assets/style.css">
+    <link rel="stylesheet" href="Assets/CSS/style.css">
 </head>
 
 <body>
@@ -17,34 +17,38 @@
     </header>
     <main>
         <!-- On the left side we have a search form "Search for a city", which will have an input and a search button. Button will need an id for event listener, and the search field will need a id for the text grabber. -->
-        <div id="searchField">
-            <div id="searchInput">
-                <form>Enter that shit</form>
+        <aside>
+            <div id="searchField">
+                <div id="searchInput">
+                    <form>Enter that shit</form>
+                </div>
+                <div id="searchBtn">
+                    <button id="btn">And awayyyyyyyyy we go</button>
+                </div>
             </div>
-            <div id="searchBtn">
-                <button id="btn">And awayyyyyyyyy we go</button>
+            <!-- Below that, the old search history will display. The aside and the container below will function identically to the challenge last week, it seems like. SEARCH RESULTS MUST BE A LINK, AND DISPLAY THE REPORT AGAIN -->
+            <div id="searchHistory">
+                <h3>Search history</h3>
+                <div id="textArea"></div>
             </div>
-        </div>
-        <!-- Below that, the old search history will display. The aside and the container below will function identically to the challenge last week, it seems like. SEARCH RESULTS MUST BE A LINK, AND DISPLAY THE REPORT AGAIN -->
-        <div id="searchHistory">
-            <h3>Search history</h3>
-            <div id="textArea"></div>
-        </div>
+        </aside>
         <!-- Next to the search card, the rest of the space below header will be taken up by a display div, showing the City chosen, the date, an icon to indicate weather, and temp, wind, and humidity. -->
-        <div id="currentWeather">
-            <h3>Todays Weather</h3>
-        </div>
-        <!-- Finally below that, Ill have a 5 day forecast (which should also be a h3). THis will be five cards displayed in a row, showing date, an icon for the weather, temp, wind and humidity. -->
-        <div id="futureWeather">
-            <h3>But what about the next few days? Well....</h3>
-            <div id="1"></div>
-            <div id="2"></div>
-            <div id="3"></div>
-            <div id="4"></div>
-            <div id="5"></div>
-
-        </div>
-
+        <section>
+            <div id="currentWeather">
+                <h3>Todays Weather</h3>
+            </div>
+            <!-- Finally below that, Ill have a 5 day forecast (which should also be a h3). THis will be five cards displayed in a row, showing date, an icon for the weather, temp, wind and humidity. -->
+            <div id="futureWeather">
+                <h3>But what about the next few days? Well....</h3>
+                <div id="forecastCtn">
+                    <div class="forecast" id="1">1</div>
+                    <div class="forecast" id="2">1</div>
+                    <div class="forecast" id="3">1</div>
+                    <div class="forecast" id="4">1</div>
+                    <div class="forecast" id="5">1</div>
+                </div>
+            </div>
+        </section>
     </main>
 
 

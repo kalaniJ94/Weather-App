@@ -1,0 +1,88 @@
+$white: #ebe9e9e2;
+$grey: #4c5350;
+$gold: #79872b;
+$box: #9f9f9f6b;
+$border: solid black 1px;
+
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-content: center;
+}
+
+body {
+    background-color: $white;
+}
+
+header {
+    background-color: $box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+main {
+    border: $gold solid 1px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+}
+
+aside {
+    border: blue solid 1px;
+    width: 25%;
+    
+
+    #searchField {
+        border: $border;
+        height: 75px;
+    }
+
+    #searchHistory {
+        border: $border;
+        height: 500px;
+            h3{
+                display: flex;
+         }
+    }
+}
+
+section {
+    border: green solid 1px;
+    width: 75%;
+
+    #currentWeather {
+        border: $border;
+        height: 200px;
+        h3{
+            display: flex;
+        }
+    }
+
+    #futureWeather {
+        border: $border;
+        display: flex;
+        flex: row;
+        flex-wrap: wrap;
+        
+        #futureWeather h3{
+            width: 100%;
+            color: #4c5350;
+            
+        }
+    }
+        
+    #forecastCtn{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .forecast{
+        border: purple solid 1px;
+        width: 200px;
+        height: 300px;
+    }
+
+}

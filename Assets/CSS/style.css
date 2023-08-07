@@ -1,0 +1,70 @@
+* {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  justify-content: center;
+}
+
+body {
+  background-color: rgba(235, 233, 233, 0.8862745098);
+}
+
+header {
+  background-color: rgba(159, 159, 159, 0.4196078431);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+main {
+  border: #79872b solid 1px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+aside {
+  border: blue solid 1px;
+  width: 25%;
+}
+aside #searchField {
+  border: solid black 1px;
+  height: 75px;
+}
+aside #searchHistory {
+  border: solid black 1px;
+  height: 500px;
+}
+aside #searchHistory h3 {
+  display: flex;
+}
+
+section {
+  border: green solid 1px;
+  width: 75%;
+}
+section #currentWeather {
+  border: solid black 1px;
+  height: 200px;
+}
+section #currentWeather h3 {
+  display: flex;
+}
+section #futureWeather {
+  border: solid black 1px;
+  display: flex;
+  flex: row;
+  flex-wrap: wrap;
+}
+section #futureWeather #futureWeather h3 {
+  width: 100%;
+  color: #4c5350;
+}
+section #forecastCtn {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+section .forecast {
+  border: purple solid 1px;
+  width: 200px;
+  height: 300px;
+}/*# sourceMappingURL=style.css.map */

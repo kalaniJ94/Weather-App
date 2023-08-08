@@ -60,9 +60,21 @@ section {
     #currentWeather {
         border: $border;
         height: 200px;
-        h3{
-            display: flex;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        header{
+            height: 20%;
+            width: 100%;
             background-color: $box;
+            border: $gold;
+            font-size: larger;
+        }
+        div{
+            height: 75%;
+            width: 150px;
+            border: $border;
+            margin: 0px 50px 0px 50px;
         }
     }
 
@@ -89,7 +101,17 @@ section {
             width: 200px;
             height: 300px;
             margin: 10px;
+            .futureHead{
+                background-color: $box;
+            }
+            .futureDiv{
+                border: $gold solid 1px;
+                height: 33%;
+                
+            }
         }
+        
     }
+   
         
 }

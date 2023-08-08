@@ -49,10 +49,22 @@ section {
 section #currentWeather {
   border: solid black 1px;
   height: 200px;
-}
-section #currentWeather h3 {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+section #currentWeather header {
+  height: 20%;
+  width: 100%;
   background-color: rgba(159, 159, 159, 0.4196078431);
+  border: #79872b;
+  font-size: larger;
+}
+section #currentWeather div {
+  height: 75%;
+  width: 150px;
+  border: solid black 1px;
+  margin: 0px 50px 0px 50px;
 }
 section #futureWeather {
   border: solid black 1px;
@@ -74,4 +86,11 @@ section #forecastCtn .forecast {
   width: 200px;
   height: 300px;
   margin: 10px;
+}
+section #forecastCtn .forecast .futureHead {
+  background-color: rgba(159, 159, 159, 0.4196078431);
+}
+section #forecastCtn .forecast .futureDiv {
+  border: #79872b solid 1px;
+  height: 33%;
 }/*# sourceMappingURL=style.css.map */

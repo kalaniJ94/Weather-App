@@ -120,7 +120,9 @@ function getLocal() {
     };
     // Current Forecast
     // currentForecast function will grab information from the API and display the date, an icon for the projected weather, as well as temp, wind, and humidity.
-
+    function currentDay(){
+       
+    };
 
 //Future Forecast
 // futureForecast will display the next five days (NOT including current day) of forecasts, as well as the same info from currentForecast(date, icon, temp, wind and humidity.)
@@ -128,3 +130,4 @@ function getLocal() {
 saveSearch();
 getData();
 getLocal();
+currentDay();

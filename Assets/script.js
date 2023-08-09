@@ -45,11 +45,11 @@ function saveSearch() {
 function displayHistory() {
     var savedText = JSON.parse(localStorage.getItem("City")) || [];
     if (savedText) {
-    var displaySpace = document.getElementById("display");
-        
-    displaySpace.innerHTML = "";
+        var displaySpace = document.getElementById("display");
+
+        displaySpace.innerHTML = "";
     }
-    if (savedText.length > 0 ) {
+    if (savedText.length > 0) {
         var ul = document.createElement("ul");
 
         for (var i = 0; i < savedText.length; i++) {
@@ -73,30 +73,30 @@ function getLocal() {
     var geoUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
     console.log(city);
     fetch(geoUrl)
-    .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Geo return error');
-            
-        }
-    })
-    .then(function (data) {
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Geo return error');
+
+            }
+        })
+        .then(function (data) {
             console.log(data);
             var lon = data[0].lon;
             var lat = data[0].lat;
-            getData(lat,lon);
+            getData(lat, lon);
         })
         .catch(error => {
             console.error('There was an error with the geo fetch operation', error);
         });
-        console.log(geoUrl);
-    };
-    function getData(lat, lon) {
-        var weatherAPI = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
-        console.log("weatherAPI:", weatherAPI);
+    console.log(geoUrl);
+};
+function getData(lat, lon) {
+    var weatherAPI = "https://api.openweathermap.org/data/2.5/forecast?units=imperial&lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+    console.log("weatherAPI:", weatherAPI);
 
-        fetch(weatherAPI)
+    fetch(weatherAPI)
         .then(function (response) {
             if (response.ok) {
                 return response.json();
@@ -106,28 +106,27 @@ function getLocal() {
         })
         // need icon, temp, humidity and wind speed
         .then(function (data) {
-            console.log(data);
-            var icon = data.list.weather[0].icon;
-            var temp = data.list.main.temp;
-            var humidity = data.list.main.humidity;
-            var wind = data.list.wind.speed;
-            console.log(icon, temp, humidity, wind);
+            console.log(data.list[0]);
+            var icon = data.list[0].weather[0].icon;
+             var temp = data.list[0].main.temp;
+             var humidity = data.list[0].main.humidity;
+             var wind = data.list[0].wind.speed;
         })
-            .catch( error => {
-                console.error('There was an error with the weather fetch operation')
-            });
-        
-    };
-    // Current Forecast
-    // currentForecast function will grab information from the API and display the date, an icon for the projected weather, as well as temp, wind, and humidity.
-    function currentDay(){
-       
-    };
+        .catch(error => {
+            console.error('There was an error with the weather fetch operation')
+        });
+
+};
+// Current Forecast
+// currentForecast function will grab information from the API and display the date, an icon for the projected weather, as well as temp, wind, and humidity.
+function currentDay() {
+
+};
 
 //Future Forecast
 // futureForecast will display the next five days (NOT including current day) of forecasts, as well as the same info from currentForecast(date, icon, temp, wind and humidity.)
 
 saveSearch();
-getData();
+// getData();
 getLocal();
 currentDay();

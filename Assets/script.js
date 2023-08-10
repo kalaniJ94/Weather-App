@@ -37,6 +37,8 @@ function saveSearch() {
             console.error("save button not found");
         }
         displayHistory();
+        
+
 
     });
 };
@@ -64,8 +66,8 @@ function displayHistory() {
         console.error("No search history available");
     }
     //Please add a clear search button here
-
 };
+
 
 
 var apiKey = "76a28d16d99532ab44512adf8fe3abab";
@@ -124,25 +126,25 @@ function getData(lat, lon) {
         .catch(error => {
             console.error('There was an error with the weather fetch operation')
         });
-};
-// Current Forecast
-// currentForecast function will grab information from the API and display the date, an icon for the projected weather, as well as temp, wind, and humidity.
-function currentDay(temp, wind, humidity, icon, cityName) {
-    var currentDisplay = document.querySelector("#currentWeather");
-
-    if (currentDisplay) {
-        console.log("Connected");
-    }
-
-    var content = `
-<h3>Today's Weather in ${cityName}</h3>
+    };
+    // Current Forecast
+    // currentForecast function will grab information from the API and display the date, an icon for the projected weather, as well as temp, wind, and humidity.
+    function currentDay(temp, wind, humidity, icon, cityName) {
+        var currentDisplay = document.querySelector("#currentWeather");
+        
+        if (currentDisplay) {
+            console.log("Connected");
+        }
+        
+        var content = `
+        <h3>Today's Weather in ${cityName}</h3>
 <img id=icon src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
 <div>Temperature: ${temp} °F</div>
 <div>Wind: ${wind} MPH</div>
 <div>Humidity: ${humidity}%</div>
 `
-    console.log(cityName)
-    currentDisplay.innerHTML = content;
+console.log(cityName)
+currentDisplay.innerHTML = content;
 
 
 };
@@ -152,11 +154,11 @@ function currentDay(temp, wind, humidity, icon, cityName) {
 
 function futureFunction(data) {
     var futureDisplay = document.querySelector("#forecastCtn");
-
+    
     if (futureDisplay) {
         // Clear previous content.
         futureDisplay.innerHTML = "";
-
+        
         // Loop through the next five days of data
         for (var i = 1; i <= 35; i += 8) {
             var dayData = data.list[i];
@@ -174,15 +176,15 @@ function futureFunction(data) {
                 console.log(dayData);
                 // Create HTML content for each day
                 var dayContent = `
-                        <div class="forecast">
-                            <h4>Date: ${formattedDate}</h4>
-                            <h4> Day ${(i / 8) + 1 - .125}</h4> 
-                            <p>Temperature: ${temp} °F</p>
-                            <p>Wind: ${wind} MPH</p>
-                            <p>Humidity: ${humidity}%</p>
-                            <img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
-                        </div>
-                    `;
+                <div class="forecast">
+                <h4>Date: ${formattedDate}</h4>
+                <h4> Day ${(i / 8) + 1 - .125}</h4> 
+                <p>Temperature: ${temp} °F</p>
+                <p>Wind: ${wind} MPH</p>
+                <p>Humidity: ${humidity}%</p>
+                <img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
+                </div>
+                `;
                 //line 171 has some weird math thing going on, I cant figure out how else to do it
                 // Append dayContent to futureDisplay
                 futureDisplay.insertAdjacentHTML('beforeend', dayContent);
@@ -191,5 +193,21 @@ function futureFunction(data) {
     }
 };
 
+function clearHistory(){
+    var clearBtn = document.querySelector("#clear")
+    if(clearBtn){
+        clearBtn.addEventListener("click", function(){
+            localStorage.removeItem("City");
+            var displaySpace = document.getElementById("display");
+            displaySpace.innerHTML = " ";
+            var currentDisplay = document.querySelector("#currentWeather");
+            currentDisplay.innerHTML = "";
+            var futureDisplay = document.querySelector("#forecastCtn");
+            futureDisplay.innerHTML = "";
+
+    });
+}
+}
 saveSearch();
 getLocal();
+clearHistory();

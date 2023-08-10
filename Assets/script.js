@@ -18,6 +18,10 @@
 // Search Section
 
 // We'll have a event listener for the search button here, which will grab the text entered into the form, which will also have a id to assign value. The text must be entered into local storage, to use with the search history function. The search should be stored as a variable "eg: city" There will also be  a variable for the api query ("eg: queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;"). THen, we'll make a api call using fetch ("eg: fetch(queryURL)")
+var apiKey = "76a28d16d99532ab44512adf8fe3abab";
+// var city = ""
+
+
 function saveSearch() {
     document.addEventListener("DOMContentLoaded", function () {
         var saveButton = document.querySelector("#searchBtn");
@@ -30,7 +34,7 @@ function saveSearch() {
                 localStorage.setItem("City", JSON.stringify(savedText));
 
                 displayHistory();
-                getLocal();
+                getLocal(searchInput);
                 getData()
             });
         } else {
@@ -57,7 +61,7 @@ function displayHistory() {
         var ul = document.createElement("ul");
 
         for (var i = 0; i < savedText.length; i++) {
-            var historyItems = document.createElement("li");
+            var historyItems = document.createElement("li" );
             historyItems.textContent = savedText[i];
             displaySpace.appendChild(historyItems);
         }
@@ -65,16 +69,14 @@ function displayHistory() {
     else {
         console.error("No search history available");
     }
-    //Please add a clear search button here
+
 };
 
 
 
-var apiKey = "76a28d16d99532ab44512adf8fe3abab";
-var city = ""
-function getLocal() {
-    var city = JSON.parse(localStorage.getItem("City",)) || "";
-    var geoUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
+function getLocal(city) {
+    // var city = JSON.parse(localStorage.getItem("City")) || "";
+    var geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
     console.log(city);
     fetch(geoUrl)
         .then(response => {
@@ -120,16 +122,16 @@ function getData(lat, lon) {
             var cityName = data.city.name;
             var date = data.list[0].dt_txt;
             console.log("Icon is " + icon + ". The temperature in " + cityName + " is " + temp + "The humidity is " + humidity + "wind speed is " + wind + " MPH and the date is " + date);
-            currentDay(temp, wind, humidity, icon, date);
+            currentDay(temp, wind, humidity, icon, date, cityName);
             futureFunction(data);
         })
         .catch(error => {
-            console.error('There was an error with the weather fetch operation')
+            console.error(error)
         });
     };
     // Current Forecast
     // currentForecast function will grab information from the API and display the date, an icon for the projected weather, as well as temp, wind, and humidity.
-    function currentDay(temp, wind, humidity, icon, cityName) {
+    function currentDay(temp, wind, humidity, icon, date ,cityName) {
         var currentDisplay = document.querySelector("#currentWeather");
         
         if (currentDisplay) {
@@ -138,7 +140,7 @@ function getData(lat, lon) {
         
         var content = `
         <h3>Today's Weather in ${cityName}</h3>
-<img id=icon src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
+<img id=icon src="https://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
 <div>Temperature: ${temp} °F</div>
 <div>Wind: ${wind} MPH</div>
 <div>Humidity: ${humidity}%</div>
@@ -182,10 +184,10 @@ function futureFunction(data) {
                 <p>Temperature: ${temp} °F</p>
                 <p>Wind: ${wind} MPH</p>
                 <p>Humidity: ${humidity}%</p>
-                <img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
+                <img src="https://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
                 </div>
                 `;
-                //line 171 has some weird math thing going on, I cant figure out how else to do it
+                //line to display Day has some weird math thing going on, I cant figure out how else to do it
                 // Append dayContent to futureDisplay
                 futureDisplay.insertAdjacentHTML('beforeend', dayContent);
             }
@@ -208,6 +210,17 @@ function clearHistory(){
     });
 }
 }
+
+var newSearch = document.getElementById("display")
+newSearch.addEventListener("click", function(e){
+    console.log(e)
+   if (e.target.tagName === "LI"){
+    getLocal(e.target.textContent);
+   }
+
+})
+
+
 saveSearch();
 getLocal();
 clearHistory();

@@ -30,6 +30,8 @@ function saveSearch() {
                 localStorage.setItem("City", JSON.stringify(savedText));
 
                 displayHistory();
+                getLocal();
+                getData()
             });
         } else {
             console.error("save button not found");
@@ -85,7 +87,9 @@ function getLocal() {
             console.log(data);
             var lon = data[0].lon;
             var lat = data[0].lat;
-            getData(lat, lon);
+            var cityName = data[0].name;
+            console.log(cityName);
+            getData(lat, lon, cityName);
         })
         .catch(error => {
             console.error('There was an error with the geo fetch operation', error);
@@ -108,25 +112,84 @@ function getData(lat, lon) {
         .then(function (data) {
             console.log(data.list[0]);
             var icon = data.list[0].weather[0].icon;
-             var temp = data.list[0].main.temp;
-             var humidity = data.list[0].main.humidity;
-             var wind = data.list[0].wind.speed;
+            var temp = data.list[0].main.temp;
+            var humidity = data.list[0].main.humidity;
+            var wind = data.list[0].wind.speed;
+            var cityName = data.city.name;
+            var date = data.list[0].dt_txt;
+            console.log("Icon is " + icon + ". The temperature in " + cityName + " is " + temp + "The humidity is " + humidity + "wind speed is " + wind + " MPH and the date is " + date);
+            currentDay(temp, wind, humidity, icon, date);
+            futureFunction(data);
         })
         .catch(error => {
             console.error('There was an error with the weather fetch operation')
         });
-
 };
 // Current Forecast
 // currentForecast function will grab information from the API and display the date, an icon for the projected weather, as well as temp, wind, and humidity.
-function currentDay() {
+function currentDay(temp, wind, humidity, icon, cityName) {
+    var currentDisplay = document.querySelector("#currentWeather");
+
+    if (currentDisplay) {
+        console.log("Connected");
+    }
+
+    var content = `
+<h3>Today's Weather in ${cityName}</h3>
+<img id=icon src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
+<div>Temperature: ${temp} °F</div>
+<div>Wind: ${wind} MPH</div>
+<div>Humidity: ${humidity}%</div>
+`
+    console.log(cityName)
+    currentDisplay.innerHTML = content;
+
 
 };
 
-//Future Forecast
+// Future Forecast
 // futureForecast will display the next five days (NOT including current day) of forecasts, as well as the same info from currentForecast(date, icon, temp, wind and humidity.)
 
+function futureFunction(data) {
+    var futureDisplay = document.querySelector("#forecastCtn");
+
+    if (futureDisplay) {
+        // Clear previous content.
+        futureDisplay.innerHTML = "";
+
+        // Loop through the next five days of data
+        for (var i = 1; i <= 35; i += 8) {
+            var dayData = data.list[i];
+            if (dayData) {
+                var date = dayData.dt_txt;
+                var formattedDate = new Date(date).toLocaleDateString('en-US', {
+                    month: 'numeric',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                var icon = dayData.weather[0].icon;
+                var temp = dayData.main.temp;
+                var humidity = dayData.main.humidity;
+                var wind = dayData.wind.speed;
+                console.log(dayData);
+                // Create HTML content for each day
+                var dayContent = `
+                        <div class="forecast">
+                            <h4>Date: ${formattedDate}</h4>
+                            <h4> Day ${(i / 8) + 1 - .125}</h4> 
+                            <p>Temperature: ${temp} °F</p>
+                            <p>Wind: ${wind} MPH</p>
+                            <p>Humidity: ${humidity}%</p>
+                            <img src="http://openweathermap.org/img/wn/${icon}.png" alt="Weather Icon">
+                        </div>
+                    `;
+                //line 171 has some weird math thing going on, I cant figure out how else to do it
+                // Append dayContent to futureDisplay
+                futureDisplay.insertAdjacentHTML('beforeend', dayContent);
+            }
+        }
+    }
+};
+
 saveSearch();
-// getData();
 getLocal();
-currentDay();

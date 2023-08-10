@@ -32,12 +32,13 @@ main {
 aside {
     border: blue solid 1px;
     width: 25%;
-    
+
 
     #searchField {
         border: $border;
         height: 75px;
-        h3{
+
+        h3 {
             display: flex;
             margin: 0px;
         }
@@ -46,10 +47,11 @@ aside {
     #searchHistory {
         border: $border;
         height: 500px;
-            h3{
-                display: flex;
-                background-color: $box;
-         }
+
+        h3 {
+            display: flex;
+            background-color: $box;
+        }
     }
 }
 
@@ -63,55 +65,63 @@ section {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        header{
+
+        header {
             height: 20%;
             width: 100%;
             background-color: $box;
             border: $gold;
             font-size: larger;
         }
+        h3{
+         
+        }
         div{
-            height: 75%;
-            width: 150px;
-            border: $border;
-            margin: 0px 50px 0px 50px;
+            margin: 30px;
+            width: 33%;
+        }
+        #icon{
+            height: 50px;
+            margin-right: 10;
         }
     }
 
-    #futureWeather {
-        border: $border;
-        display: flex;
-        flex: row;
-        flex-wrap: wrap;
-        
-        #futureWeather h3{
-            width: 100%;
-           background-color: $box;
-            
+    
+}
+
+#futureWeather {
+    border: $border;
+    display: flex;
+    flex: row;
+    flex-wrap: wrap;
+
+    #futureWeather h3 {
+        width: 100%;
+        background-color: $box;
+
+    }
+}
+
+#forecastCtn {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .forecast {
+        border: purple solid 1px;
+        width: 200px;
+        height: 300px;
+        margin: 10px;
+
+        .futureHead {
+            background-color: $box;
+        }
+
+        .futureDiv {
+            border: $gold solid 1px;
+            height: 33%;
+
         }
     }
-        
-    #forecastCtn{
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        
-        .forecast{
-            border: purple solid 1px;
-            width: 200px;
-            height: 300px;
-            margin: 10px;
-            .futureHead{
-                background-color: $box;
-            }
-            .futureDiv{
-                border: $gold solid 1px;
-                height: 33%;
-                
-            }
-        }
-        
-    }
-   
-        
+
 }

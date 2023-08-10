@@ -61,36 +61,40 @@ section #currentWeather header {
   font-size: larger;
 }
 section #currentWeather div {
-  height: 75%;
-  width: 150px;
-  border: solid black 1px;
-  margin: 0px 50px 0px 50px;
+  margin: 30px;
+  width: 33%;
 }
-section #futureWeather {
+section #currentWeather #icon {
+  height: 50px;
+  margin-right: 10;
+}
+
+#futureWeather {
   border: solid black 1px;
   display: flex;
   flex: row;
   flex-wrap: wrap;
 }
-section #futureWeather #futureWeather h3 {
+#futureWeather #futureWeather h3 {
   width: 100%;
   background-color: rgba(159, 159, 159, 0.4196078431);
 }
-section #forecastCtn {
+
+#forecastCtn {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
-section #forecastCtn .forecast {
+#forecastCtn .forecast {
   border: purple solid 1px;
   width: 200px;
   height: 300px;
   margin: 10px;
 }
-section #forecastCtn .forecast .futureHead {
+#forecastCtn .forecast .futureHead {
   background-color: rgba(159, 159, 159, 0.4196078431);
 }
-section #forecastCtn .forecast .futureDiv {
+#forecastCtn .forecast .futureDiv {
   border: #79872b solid 1px;
   height: 33%;
 }/*# sourceMappingURL=style.css.map */
